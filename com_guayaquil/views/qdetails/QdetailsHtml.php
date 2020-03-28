@@ -48,19 +48,11 @@ class QdetailsHtml extends View
             ]
         ];
 
-        if (!$oem) {
-            $requests['appendListQuickDetail'] = [
-                'vid' => $vid,
-                'gid' => $gid,
-                'all' => 1
-            ];
-        } else {
-            $requests['appendGetOemPartApplicability'] = [
-                'oem' => $oem,
-            ];
-
-            $this->applicability = true;
-        }
+        $requests['appendListQuickDetail'] = [
+            'vid' => $vid,
+            'gid' => $gid,
+            'all' => 1
+        ];
 
         $data = $this->getData($requests, $params);
 
@@ -71,19 +63,19 @@ class QdetailsHtml extends View
             $details     = $data[2];
             $catalogInfo = $data[0];
 
-            $pathway = new Pathway();
+//            $pathway = new Pathway();
+//
+//            $pathway->addItem($catalogInfo->name, $catalogInfo->link);
+//
+//            $pathway->addItem($vehicle->name, $language->createUrl('qgroups', '', '', [
+//                'c'   => $catalogInfo->code,
+//                'vid' => $vehicle->vehicleid,
+//                'ssd' => $vehicle->ssd
+//            ]));
 
-            $pathway->addItem($catalogInfo->name, $catalogInfo->link);
+//            $pathway->addItem($language->t('detailsInGroup'));
 
-            $pathway->addItem($vehicle->name, $language->createUrl('qgroups', '', '', [
-                'c'   => $catalogInfo->code,
-                'vid' => $vehicle->vehicleid,
-                'ssd' => $vehicle->ssd
-            ]));
-
-            $pathway->addItem($language->t('detailsInGroup'));
-
-            $this->pathway    = $pathway->getPathway();
+//            $this->pathway    = $pathway->getPathway();
             $this->gid        = $this->input->getString('gid', '');
 //            $this->categories = $categories;
             $this->details    = $details;

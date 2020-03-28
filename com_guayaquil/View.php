@@ -264,7 +264,7 @@ class View
             'auto_reload' => true,
         ));
 
-        $language = !function_exists('resolve') ? resolve(Language::class) : new language();
+        $language = function_exists('resolve') ? resolve(Language::class) : new language();
 
         $createUrlFunc = new Twig_SimpleFunction('createUrl', [$language, 'createUrl']);
         $twig->addFunction($createUrlFunc);

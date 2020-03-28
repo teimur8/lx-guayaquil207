@@ -46,7 +46,7 @@ class GuayaquilRequestOEM
 
         $cache = !is_null($cache)
             ? $cache
-            : !function_exists('resolve')
+            : function_exists('resolve')
                 ? resolve(IGuayquilCache::class) : null;
 
         $this->locale  = $this->checkParam($locale);
