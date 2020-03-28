@@ -1,6 +1,8 @@
 #Guayaquil v2.0
 *Read the documentation for details: [wiki.technologytrade.ru](http://wiki.technologytrade.ru)*
 
+# Эта ветка сама не запуститься, она подкорректирована под ларку, если нужна оригинальная ветка го в master";
+
 **Requirements:**
 
 * PHP 5.6 +

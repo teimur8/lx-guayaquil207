@@ -148,16 +148,16 @@ class View
 //            }
 //        }
 
-        $this->renderHead([
-            'user'               => $this->user,
-            'dev'                => $this->dev,
-            'showToGuest'        => Config::$showToGuest,
-            'useEnvParams'       => Config::$useEnvParams,
-            'showGroupsToGuest'  => Config::$showGroupsToGuest,
-            'showOemsToGuest'    => Config::$showOemsToGuest,
-            'username'           => isset($_SESSION['username']) ? $_SESSION['username'] : '',
-            'productionRevision' =>  ''
-        ]);
+//        $this->renderHead([
+//            'user'               => $this->user,
+//            'dev'                => $this->dev,
+//            'showToGuest'        => Config::$showToGuest,
+//            'useEnvParams'       => Config::$useEnvParams,
+//            'showGroupsToGuest'  => Config::$showGroupsToGuest,
+//            'showOemsToGuest'    => Config::$showOemsToGuest,
+//            'username'           => isset($_SESSION['username']) ? $_SESSION['username'] : '',
+//            'productionRevision' =>  ''
+//        ]);
 
 //        $auth = $this->input->getString('auth', '');
 
@@ -264,7 +264,7 @@ class View
             'auto_reload' => true,
         ));
 
-        $language = new language();
+        $language = !function_exists('resolve') ? resolve(Language::class) : new language();
 
         $createUrlFunc = new Twig_SimpleFunction('createUrl', [$language, 'createUrl']);
         $twig->addFunction($createUrlFunc);
@@ -279,6 +279,14 @@ class View
         return $twig;
     }
 
+    /**
+     * Крошки
+     * @param $pathway
+     * @return void
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function renderPathway($pathway)
     {
         $input  = new Input();

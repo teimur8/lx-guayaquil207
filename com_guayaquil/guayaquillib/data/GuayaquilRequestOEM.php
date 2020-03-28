@@ -44,6 +44,11 @@ class GuayaquilRequestOEM
             $locale = Config::$catalog_data;
         }
 
+        $cache = !is_null($cache)
+            ? $cache
+            : !function_exists('resolve')
+                ? resolve(IGuayquilCache::class) : null;
+
         $this->locale  = $this->checkParam($locale);
         $this->catalog = $this->checkParam($catalog);
         $this->ssd     = $this->checkParam($ssd);
