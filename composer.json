@@ -1,4 +1,6 @@
 {
+  "name": "teimur/lx-guayaquil207",
+  "description": "Library for laximo",
   "autoload": {
     "psr-4": {
       "guayaquil\\": "com_guayaquil/"
