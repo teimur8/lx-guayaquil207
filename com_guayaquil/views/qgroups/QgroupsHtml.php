@@ -33,48 +33,23 @@ class QgroupsHtml extends View
     {
         $catalogCode = $this->input->getString('c');
         $ssd         = $this->input->getString('ssd', '');
-        $oem         = $this->input->getString('oem');
         $vid         = $this->input->getString('vid', '');
-        $language    = new Language();
         $params      = ['c' => $catalogCode, 'ssd' => $ssd, ''];
-
 
 
         $requests = [
             'appendGetCatalogInfo' => [],
             'appendGetVehicleInfo' => [
                 'vid' => $vid
+            ],
+            'appendListQuickGroup' => [
+                'vid' => $vid
             ]
         ];
 
 
-        if (!$oem) {
-            $requests['appendListQuickGroup'] = [
-                'vid' => $vid
-            ];
-        } else {
-            $linkToQdetails = $language->createUrl('qdetails', '', '', [
-                'c'   => $catalogCode,
-                'oem' => $oem,
-                'vid' => $vid,
-                'ssd' => $ssd
-            ]);
-
-            $this->redirect($linkToQdetails);
-        }
-
-
-
         $data = $this->getData($requests, $params);
 
-
-        if (!isset($_SESSION['logged']) && !Config::$showGroupsToGuest) {
-            $this->redirect($language->createUrl('vehicle', '', '', [
-                'c' => $catalogCode,
-                'ssd' => $ssd,
-                'vid' => $vid,
-            ]));
-        }
 
         if ($data) {
 
@@ -98,12 +73,12 @@ class QgroupsHtml extends View
             $pathway->addItem($catalogInfo->name, $catalogInfo->link);
             $pathway->addItem($vehicle->brand . ' ' . $vehicle->name);
 
-            $this->pathway          = $pathway->getPathway();
+//            $this->pathway          = $pathway->getPathway();
             $this->vehicle          = $vehicle;
             $this->groups           = $groups;
             $this->cataloginfo      = $catalogInfo;
             $this->ssd              = $this->input->getString('ssd', '');
-            $this->oem              = $oem;
+//            $this->oem              = $oem;
             $this->useApplicability = $catalogInfo ? $catalogInfo->supportdetailapplicability : 0;
             $this->showApplicability = Config::$showApplicability;
             $this->partsList        = isset($data[3]) ? $data[3]->oemParts : null;

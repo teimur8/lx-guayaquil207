@@ -122,30 +122,31 @@ class View
 
     public function Display($tpl = 'catalogs/tmpl', $view = 'view.twig')
     {
-        $this->dev          = Config::$dev;
-        $productionRevision = false;
+//        $this->dev          = Config::$dev;
+//        $productionRevision = false;
 
-        if (!$this->dev) {
-            $productionRevision = json_decode(file_get_contents(GUAYAQUIL_DIR . '/revision.json'));
-        }
+//        if (!$this->dev) {
+//            $productionRevision = json_decode(file_get_contents(GUAYAQUIL_DIR . '/revision.json'));
+//        }
 
-        if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) {
-            $this->user = true;
-        } else {
-            if (!Config::$showToGuest) {
-                http_response_code(401);
-                $this->renderHead([
-                    'user'               => $this->user,
-                    'dev'                => $this->dev,
-                    'username'           => isset($_SESSION['username']) ? $_SESSION['username'] : '',
-                    'productionRevision' => $productionRevision ?: '',
-                    'useEnvParams'       => Config::$useEnvParams
-                ]);
-                $this->loadTwig('error/tmpl', 'unauthorized.twig', ['type' => 'unauthorized']);
-                $this->renderFooter();
-                die();
-            }
-        }
+        // Проверка аторизации
+//        if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) {
+//            $this->user = true;
+//        } else {
+//            if (!Config::$showToGuest) {
+//                http_response_code(401);
+//                $this->renderHead([
+//                    'user'               => $this->user,
+//                    'dev'                => $this->dev,
+//                    'username'           => isset($_SESSION['username']) ? $_SESSION['username'] : '',
+//                    'productionRevision' => $productionRevision ?: '',
+//                    'useEnvParams'       => Config::$useEnvParams
+//                ]);
+//                $this->loadTwig('error/tmpl', 'unauthorized.twig', ['type' => 'unauthorized']);
+//                $this->renderFooter();
+//                die();
+//            }
+//        }
 
         $this->renderHead([
             'user'               => $this->user,
@@ -155,26 +156,26 @@ class View
             'showGroupsToGuest'  => Config::$showGroupsToGuest,
             'showOemsToGuest'    => Config::$showOemsToGuest,
             'username'           => isset($_SESSION['username']) ? $_SESSION['username'] : '',
-            'productionRevision' => $productionRevision ?: ''
+            'productionRevision' =>  ''
         ]);
 
-        $auth = $this->input->getString('auth', '');
+//        $auth = $this->input->getString('auth', '');
 
-        $language = new Language();
+//        $language = new Language();
 
-        if ($auth === 'true') {
-            $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
-            $message  = str_replace('%name%', $username, $language->t('AUTHORIZED'));
-            $this->showMessage($message, 'success');
-        } elseif ($auth === 'false') {
-            $message = $language->t('UNAUTHORIZED');
-            $this->showMessage($message, 'warning');
-        }
+//        if ($auth === 'true') {
+//            $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+//            $message  = str_replace('%name%', $username, $language->t('AUTHORIZED'));
+//            $this->showMessage($message, 'success');
+//        } elseif ($auth === 'false') {
+//            $message = $language->t('UNAUTHORIZED');
+//            $this->showMessage($message, 'warning');
+//        }
 
 
-        if (!isset($this->pathway)) {
-            $this->pathway = null;
-        }
+//        if (!isset($this->pathway)) {
+//            $this->pathway = null;
+//        }
 
         if (!isset($this->error)) {
             $this->error = null;
@@ -189,20 +190,22 @@ class View
             $this->loadTwig('error/tmpl', 'default.twig', ['message' => $this->message, 'more' => $this->errorTrace]);
         }
 
-        if ($this->pathway) {
-            $this->renderPathway($this->pathway);
-        }
+//        if ($this->pathway) {
+//            $this->renderPathway($this->pathway);
+//        }
 
         $format = $this->input->getString('format');
 
-        if ($format !== 'raw') {
-            $task          = $this->input->getString('task');
-            $this->toolbar = in_array($task, Config::$toolbarPages);
-            $this->showRequest();
-        }
+//        dd($format, $this);
+
+//        if ($format !== 'raw') {
+//            $task          = $this->input->getString('task');
+//            $this->toolbar = in_array($task, Config::$toolbarPages);
+//            $this->showRequest();
+//        }
 
         $this->loadTwig($tpl . '/tmpl', $view . '.twig', (array)$this);
-        $this->renderFooter();
+//        $this->renderFooter();
     }
 
     public function renderHead($vars = [])

@@ -4,7 +4,9 @@
       "guayaquil\\": "com_guayaquil/"
     }
   },
-  "require-dev": {},
+  "require-dev": {
+    "symfony/var-dumper": "^5.0"
+  },
   "require": {
     "twig/twig": "^1.0",
     "vlucas/phpdotenv": "^4.1"

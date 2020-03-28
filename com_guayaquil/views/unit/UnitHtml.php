@@ -82,6 +82,7 @@ class UnitHtml extends View
             $this->showOems          = Config::$showOemsToGuest;
             $this->showApplicability = Config::$showApplicability;
             $this->linkTarget        = $this->getLinkTarget();
+
         }
 
         parent::Display($tpl, $view);

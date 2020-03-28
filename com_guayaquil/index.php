@@ -5,7 +5,6 @@ use Dotenv\Dotenv;
 
 define('GUAYAQUIL_DIR', __DIR__);
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+Dotenv::createImmutable(__DIR__)->load();
 
 router::start();
