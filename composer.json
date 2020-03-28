@@ -11,6 +11,6 @@
   },
   "require": {
     "twig/twig": "^1.0",
-    "vlucas/phpdotenv": "v2.2"
+    "vlucas/phpdotenv": "v2.6.1"
   }
 }
