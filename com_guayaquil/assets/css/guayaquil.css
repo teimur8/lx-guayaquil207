@@ -2,15 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
-p, a, span, ul, li, b, h1, h2, h3, h4, h5, h6, strong, body, input, select {
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    min-width: 1280px;
-    margin: 0 8px;
-    min-height: 100%;
-}
 
 .content-wrapper {
     margin: 0;
@@ -21,24 +12,6 @@ body {
 
 #cboxLoadedContent .content-wrapper {
     padding: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 500;
-}
-
-a {
-    color: #006FA4;
-    text-decoration: none;
-}
-
-a:visited {
-    color: #006FA4;
-}
-
-a:hover, a:active, a:focus {
-    text-decoration: underline;
 }
 
 span.example {
@@ -464,29 +437,29 @@ input[type=password]:focus {
     margin-left: 5px;
 }
 
-.select {
-    background-color: #fff;
-    border: solid 1px #ddd;
-    cursor: pointer;
-    font-size: 14px;
-    height: 30px;
-    outline: none;
-    padding-left: 5px;
-    padding-right: 30px;
-    position: relative;
-    clear: both;
-    text-align: left;
-    white-space: nowrap;
-    width: 270px;
-    background: url('../images/down-arrow.png') no-repeat;
-    background-position: 97% 50%;
-    background-size: 16px 16px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-}
+/*.select {*/
+    /*background-color: #fff;*/
+    /*border: solid 1px #ddd;*/
+    /*cursor: pointer;*/
+    /*font-size: 14px;*/
+    /*height: 30px;*/
+    /*outline: none;*/
+    /*padding-left: 5px;*/
+    /*padding-right: 30px;*/
+    /*position: relative;*/
+    /*clear: both;*/
+    /*text-align: left;*/
+    /*white-space: nowrap;*/
+    /*width: 270px;*/
+    /*background: url('../images/down-arrow.png') no-repeat;*/
+    /*background-position: 97% 50%;*/
+    /*background-size: 16px 16px;*/
+    /*-webkit-appearance: none;*/
+    /*-moz-appearance: none;*/
+    /*-ms-appearance: none;*/
+    /*-o-appearance: none;*/
+    /*appearance: none;*/
+/*}*/
 
 .select[disabled] {
     background: none;

@@ -2,7 +2,7 @@
 {% use 'blocks/details.twig' %}
 
 <h1>{{ 'carname'|t|replace({'%s': vehicle.brand ~ ' ' ~ vehicle.name}) }}</h1>
-<div id="pagecontent" class="qgroups-wrapper">
+<div id="pagecontent" class="qgroups-wrapper row">
     {{ block('tree') }}
     {{ block('details') }}
 </div>

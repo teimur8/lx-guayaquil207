@@ -1,25 +1,25 @@
 {% use 'blocks/fastSearch.twig' %}
 
-{#{% block oemSearch %}#}
-    {#{% spaceless %}#}
-        {#<div class="find">#}
-            {#<form name="findByOEM" onSubmit="checkOem(this.OEM.value, '#OEM', this.ssd.value); return false"#}
-                  {#id="findByOEM">#}
+{% block oemSearch %}
+    {% spaceless %}
+        <div class="find">
+            <form name="findByOEM" onSubmit="checkOem(this.OEM.value, '#OEM', this.ssd.value); return false"
+                  id="findByOEM">
 
-                {#<div id="OEMInput" class="g_input">#}
-                    {#<input placeholder="{{ 'findOems'|t }}" class="catalog_search_input" name="oem" type="text" id="OEM"#}
-                           {#size="17" value=""/>#}
-                    {#<input type="submit" class="btn search" name="oemSubmit" value="" id="oemSubmit"/>#}
-                {#</div>#}
+                <div id="OEMInput" class="g_input">
+                    <input placeholder="{{ 'findOems'|t }}" class="catalog_search_input" name="oem" type="text" id="OEM"
+                           size="17" value=""/>
+                    <input type="submit" class="btn search" name="oemSubmit" value="" id="oemSubmit"/>
+                </div>
 
-                {#<input type="hidden" name="task" value="applicabilitydetails"/>#}
-                {#<input type="hidden" name="ssd" value="{{ vehicle.ssd ?: ssd }}"/>#}
-                {#<input type="hidden" name="vid" value="{{ vehicle.vehicleid }}"/>#}
-                {#<input type="hidden" name="c" value="{{ cataloginfo.code }}"/>#}
-            {#</form>#}
-        {#</div>#}
-    {#{% endspaceless %}#}
-{#{% endblock %}#}
+                <input type="hidden" name="task" value="applicabilitydetails"/>
+                <input type="hidden" name="ssd" value="{{ vehicle.ssd ?: ssd }}"/>
+                <input type="hidden" name="vid" value="{{ vehicle.vehicleid }}"/>
+                <input type="hidden" name="c" value="{{ cataloginfo.code }}"/>
+            </form>
+        </div>
+    {% endspaceless %}
+{% endblock %}
 
 {% block tree %}
     {% set vehicleLink = createUrl('vehicle', '', '', {
@@ -27,8 +27,8 @@
     'vid': vehicle.vehicleid ?: vid ?: 0,
     'ssd': vehicle.ssd ?: ssd,
     }) %}
-    <div id="guayaquil_toolbar" class="xboxcontent">
-            <span class="g_ToolbarButton">
+    <div id="guayaquil_toolbar" class="xboxcontent col-12">
+            <span class="btn-primary">
                 <a href="{{ vehicleLink }}">{{ 'vehiclelink'|t }}</a>
             </span>
         {% if useApplicability and showApplicability %}
@@ -37,7 +37,7 @@
             </div>
         {% endif %}
     </div>
-    <div id="qgTree" onclick="tree_toggle(arguments[0])">
+    <div id="qgTree" onclick="tree_toggle(arguments[0])" class="col-lg-5">
         {{ block ('fastSearch') }}
         <div id="gqGroupsWrapper">
             {% block groupsList %}
@@ -134,7 +134,7 @@
                         jQuery(requestBlock).html(requestData.html());
                     }
 
-                    window.history.replaceState({}, '', 'index.php?' + cUrl);
+                    window.history.replaceState({}, '', '/autozapchasti/model?' + cUrl);
 
                     hidePreloader();
                 }

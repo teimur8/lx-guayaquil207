@@ -11,7 +11,7 @@ use guayaquil\View;
 class ErrorHtml extends View
 {
     public function Display($tpl = 'error', $view = 'error') {
-        $type = $this->input->getString('type', 'error');
+        $type = $this->input->get('type', 'error');
 
         parent::Display($tpl, $type);
     }

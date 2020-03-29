@@ -14,9 +14,9 @@ class CatalogHtml extends View
 
     public function Display($tpl = 'catalog', $view = 'view')
     {
-        if ($c = $this->input->getString('c')) {
-            $ssd  = $this->input->getString('ssd', '');
-            $spi2 = $this->input->getString('spi2', '');
+        if ($c = $this->input->get('c')) {
+            $ssd  = $this->input->get('ssd', '');
+            $spi2 = $this->input->get('spi2', '');
 
 
             $requests = [

@@ -6,7 +6,7 @@
         {% block top_line %}
             <div id="guayaquil_toolbar" class="xboxcontent">
                 {% if cataloginfo.supportquickgroups and (user or showGrousToGuest) %}
-                    <span class="g_ToolbarButton">
+                    <span class="btn-primary">
                     {% set qgroupsLink = createUrl('qgroups', '', '', {
                     'c':vehicle.catalog,
                     'vid':vehicle.vehicleid,
@@ -17,11 +17,11 @@
                     </a>
                 </span>
                 {% endif %}
-                {% if useApplicability and showApplicability %}
-                    <div class="oem-search">
-                        {{ block('oemSearch') }}
-                    </div>
-                {% endif %}
+                {#{% if useApplicability and showApplicability %}#}
+                    {#<div class="oem-search">#}
+                        {#{{ block('oemSearch') }}#}
+                    {#</div>#}
+                {#{% endif %}#}
             </div>
         {% endblock %}
 

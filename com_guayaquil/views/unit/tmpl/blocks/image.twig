@@ -4,7 +4,7 @@
             <div class="guayaquil_zoom cboxElement"
                  full="{{ unit.imageurl|replace({'%size%': 'source'}) }}"
                  title="{{ unit.code }}: {{ unit.name }}">
-                <img src="com_guayaquil/assets/images/zoom_{{ theme }}.png">
+                <img src="/lx/images/zoom_{{ theme }}.png">
             </div>
         </div>
     {% endif %}
@@ -34,7 +34,7 @@
                     {% if item.link %}
                         <a href="{{ item.link.getLink() }}">
                      {% endif %}
-                        <img src="com_guayaquil/assets/images/spacer.gif" width="{{ width }}" height="{{ height }}">
+                        <img src="/lx/images/spacer.gif" width="{{ width }}" height="{{ height }}">
                     {% if item.link %}
                         </a>
                     {% endif %}

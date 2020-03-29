@@ -25,10 +25,10 @@ class ApplicabilitydetailsHtml extends View
 
     public function displayApplicabilityDetails()
     {
-        $c                   = $this->input->getString('c', '');
-        $ssd                 = $this->input->getString('ssd', '');
-        $oem                 = $this->input->getString('oem', '');
-        $vid                 = $this->input->getString('vid');
+        $c                   = $this->input->get('c', '');
+        $ssd                 = $this->input->get('ssd', '');
+        $oem                 = $this->input->get('oem', '');
+        $vid                 = $this->input->get('vid');
         $this->showOems      = Config::$showOemsToGuest;
         $this->applicability = true;
 
@@ -55,7 +55,7 @@ class ApplicabilitydetailsHtml extends View
 
             if ($cataloginfo) {
                 $pathway->addItem($cataloginfo->name,
-                    'index.php?task=catalog&c=' . $cataloginfo->code . ($cataloginfo->supportparameteridentification ? '&spi=t' : '') . ($cataloginfo->supportparameteridentification2 ? '&spi2=t' : '') . ('&ssd='));
+                    '/autozapchasti/model?task=catalog&c=' . $cataloginfo->code . ($cataloginfo->supportparameteridentification ? '&spi=t' : '') . ($cataloginfo->supportparameteridentification2 ? '&spi2=t' : '') . ('&ssd='));
 
             }
             if ($vehicle) {
@@ -73,10 +73,10 @@ class ApplicabilitydetailsHtml extends View
 
             $this->pathway = $pathway->getPathway();
 
-            $this->gid        = $this->input->getString('gid', '');
+            $this->gid        = $this->input->get('gid', '');
             $this->details    = $details;
             $this->vehicle    = $vehicle;
-            $this->format     = $this->input->getString('format', '');
+            $this->format     = $this->input->get('format', '');
             $this->noimage    = Config::$imagePlaceholder;
             $this->domain     = $this->getBackUrl();
             $this->linkTarget = $this->getLinkTarget();

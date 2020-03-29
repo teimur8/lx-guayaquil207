@@ -21,11 +21,11 @@ class UnitfilterHtml extends View
 {
     public function Display($tpl = 'unitfilter', $view = 'view')
     {
-        $c   = $this->input->getString('c');
-        $ssd = $this->input->getString('ssd');
-        $f   = $this->input->getString('f');
-        $vid = $this->input->getString('vid');
-        $uid = $this->input->getString('uid');
+        $c   = $this->input->get('c');
+        $ssd = $this->input->get('ssd');
+        $f   = $this->input->get('f');
+        $vid = $this->input->get('vid');
+        $uid = $this->input->get('uid');
 
         $params      = ['c' => $c, 'ssd' => $ssd, ''];
 
@@ -45,7 +45,7 @@ class UnitfilterHtml extends View
         if ($data) {
             $filter_data = $data[0];
             $unit        = $data[1];
-            $fromTask    = $this->input->getString('fromTask');
+            $fromTask    = $this->input->get('fromTask');
 
             $this->filter_data = $filter_data;
             $this->unit        = $unit;

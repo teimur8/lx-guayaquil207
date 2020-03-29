@@ -31,9 +31,9 @@ class QgroupsHtml extends View
 {
     public function Display($tpl = 'qgroups', $view = 'view')
     {
-        $catalogCode = $this->input->getString('c');
-        $ssd         = $this->input->getString('ssd', '');
-        $vid         = $this->input->getString('vid', '');
+        $catalogCode = $this->input->get('c');
+        $ssd         = $this->input->get('ssd', '');
+        $vid         = $this->input->get('vid', '');
         $params      = ['c' => $catalogCode, 'ssd' => $ssd, ''];
 
 
@@ -60,9 +60,9 @@ class QgroupsHtml extends View
 
             if (!$groups) {
                 $vehicleLink = $language->createUrl('vehicle', '', '', [
-                    'c'   => $vehicle->catalog ?: $this->input->getString('c'),
-                    'vid' => $vehicle->vehicleid ?: $this->input->getString('vid'),
-                    'ssd' => $vehicle->ssd ?: $this->input->getString('ssd')
+                    'c'   => $vehicle->catalog ?: $this->input->get('c'),
+                    'vid' => $vehicle->vehicleid ?: $this->input->get('vid'),
+                    'ssd' => $vehicle->ssd ?: $this->input->get('ssd')
                 ]);
 
                 $this->redirect($vehicleLink);
@@ -77,7 +77,7 @@ class QgroupsHtml extends View
             $this->vehicle          = $vehicle;
             $this->groups           = $groups;
             $this->cataloginfo      = $catalogInfo;
-            $this->ssd              = $this->input->getString('ssd', '');
+            $this->ssd              = $this->input->get('ssd', '');
 //            $this->oem              = $oem;
             $this->useApplicability = $catalogInfo ? $catalogInfo->supportdetailapplicability : 0;
             $this->showApplicability = Config::$showApplicability;

@@ -420,9 +420,9 @@ function checkVinValue(value, submit_btn) {
         var form = jQuery(document).find('form[name="findByVIN"]');
         var catalog = form.find('input[name="c"]').val();
         if (catalog) {
-            window.location = 'index.php?task=vehicles&ft=findByVIN&c=' + catalog + '&vin=$vin$&ssd='.replace('\$vin\$', value);
+            window.location = '/autozapchasti/model?task=vehicles&ft=findByVIN&c=' + catalog + '&vin=$vin$&ssd='.replace('\$vin\$', value);
         } else {
-            window.location = 'index.php?task=vehicles&ft=findByVIN&c=&vin=$vin$&ssd='.replace('\$vin\$', value);
+            window.location = '/autozapchasti/model?task=vehicles&ft=findByVIN&c=&vin=$vin$&ssd='.replace('\$vin\$', value);
         }
     } else {
         jQuery('#VINInput').attr('class', 'g_input_error');
@@ -444,7 +444,7 @@ function checkFrameValue(frameno, submit_btn) {
         result = false;
     }
     if (result) {
-        window.location = 'index.php?task=vehicles&ft=findByFrame&ssd=&c=' + catalog + '&frameNo=' + frameno;
+        window.location = '/autozapchasti/model?task=vehicles&ft=findByFrame&ssd=&c=' + catalog + '&frameNo=' + frameno;
     }
 }
 
@@ -461,7 +461,7 @@ function checkOem(oem, block, ssd) {
         form.find('input[name="OEM"]').val(value);
         jQuery(inputWrapper).attr('class', 'g_input');
         var catalog = form.find('input[name="c"]').val();
-        window.location = 'index.php?' + serrialized;
+        window.location = '/autozapchasti/model?' + serrialized;
     } else {
         jQuery(inputWrapper).attr('class', 'g_input_error');
     }
@@ -471,7 +471,7 @@ function openWizard(ssd, catalogCode) {
     if (ssd == 'null') {
         return false;
     }
-    var url = 'index.php?task=wizard2&c=' + catalogCode + '&ssd=$ssd$'.replace('\$ssd\$', ssd);
+    var url = '/autozapchasti/model?task=wizard2&c=' + catalogCode + '&ssd=$ssd$'.replace('\$ssd\$', ssd);
     window.location = url;
 }
 
@@ -1135,7 +1135,7 @@ jQuery(document).ready(function () {
     });
 });
 
-var opennedimage = 'com_guayaquil/assets/images/openned.gif';
+var opennedimage = '/lx/images/openned.gif';
 var closedimage = 'com_guayaquil/assets/images/closed.gif';
 jQuery(document).ready(function ($) {
     jQuery('td.g_rowdatahint').tooltip({

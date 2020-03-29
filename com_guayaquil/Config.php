@@ -46,10 +46,10 @@ class Config
     public static $showApplicability = true;
 
     /* Url to page where you can see offers to current detail */
-    public static $SiteDomain = 'http://site.com/index.php?keyword={article}&brand={brand}';
+    public static $SiteDomain = '/autozapchasti/part/{article}?brand={brand}';
 
     /* image placeholder */
-    public static $imagePlaceholder = 'com_guayaquil/assets/images/no-image.gif';
+    public static $imagePlaceholder = '/lx/images/no-image.gif';
 
     /* columns on catalogs list page */
     public static $catalogColumns = 3;
@@ -67,7 +67,7 @@ class Config
 
     /* system find named css-file and apply it, now can be "guayaquil", "green" */
     public static $theme = 'guayaquil';
-    public static $backurlError = 'index.php?task=error&type=backurl';
+    public static $backurlError = '/autozapchasti/model?task=error&type=backurl';
     public static $linkTarget = '_parent';
 
     public static $VehiclesColumns = [

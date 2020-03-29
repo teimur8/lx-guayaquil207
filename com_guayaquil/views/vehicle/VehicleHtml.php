@@ -13,11 +13,11 @@ class VehicleHtml extends View
 
     public function Display($tpl = 'vehicle', $view = 'view')
     {
-        $catalogCode   = $this->input->getString('c');
-        $ssd           = $this->input->getString('ssd', '');
-        $vid           = $this->input->getString('vid');
-        $cid           = $this->input->getString('cid', -1);
-        $linkedWithUnit = $this->input->getString('linkedWithUnit');
+        $catalogCode   = $this->input->get('c');
+        $ssd           = $this->input->get('ssd', '');
+        $vid           = $this->input->get('vid');
+        $cid           = $this->input->get('cid', -1);
+        $linkedWithUnit = $this->input->get('linkedWithUnit');
         $language = new Language();
 
         $requests = [
@@ -60,13 +60,13 @@ class VehicleHtml extends View
                 $this->redirect($unit->getLink($vehicle, $cCategory));
             }
 
-            if ($this->input->getString('checkQG', false) && $catalogInfo->supportquickgroups) {
+            if ($this->input->get('checkQG', false) && $catalogInfo->supportquickgroups) {
 
                 $link = $language->createUrl('qgroups', '', '', [
-                    'c'         => $this->input->getString('c'),
-                    'vid'       => $this->input->getString('vid'),
-                    'ssd'       => $this->input->getString('ssd'),
-                    'path_data' => $this->input->getString('path_data')
+                    'c'         => $this->input->get('c'),
+                    'vid'       => $this->input->get('vid'),
+                    'ssd'       => $this->input->get('ssd'),
+                    'path_data' => $this->input->get('path_data')
                 ]);
 
                 $this->redirect($link);
@@ -88,15 +88,15 @@ class VehicleHtml extends View
 
             $this->pathway = $pathway->getPathway();
 
-            $this->vin               = $this->input->getString('vin', '');
-            $this->frame             = $this->input->getString('frame', '');
-            $this->node_id           = $this->input->getString('node_id', '');
+            $this->vin               = $this->input->get('vin', '');
+            $this->frame             = $this->input->get('frame', '');
+            $this->node_id           = $this->input->get('node_id', '');
             $this->cataloginfo       = $catalogInfo;
             $this->vehicle           = $vehicle;
             $this->categories        = $categories;
             $this->units             = $units;
             $this->imageSize         = Config::imageSize;
-            $this->cCid              = $this->input->getString('cid', '');
+            $this->cCid              = $this->input->get('cid', '');
             $this->firstCategory     = $firstCategory->categoryid;
             $this->useApplicability  = $catalogInfo ? $catalogInfo->supportdetailapplicability : 0;
             $this->partsList         = isset($data[4]) ? $data[4]->oemParts : null;

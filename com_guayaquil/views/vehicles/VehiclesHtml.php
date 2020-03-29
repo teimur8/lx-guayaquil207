@@ -21,22 +21,22 @@ class VehiclesHtml extends View
 
     public function Display($tpl = 'vehicles', $view = 'view')
     {
-        if ($this->input->getString('view') === 'checkDetailApplicability') {
+        if ($this->input->get('view') === 'checkDetailApplicability') {
             $this->checkDetailApplicability();
         }
 
-        $vin         = $this->input->getString('vin', '');
-        $frameNo     = $this->input->getString('frameNo', '');
-        $oem         = $this->input->getString('oem', false);
-        $operation   = $this->input->getString('operation', '');
-        $catalogCode = $this->input->getString('c');
-        $ssd         = $this->input->getString('ssd', '');
+        $vin         = $this->input->get('vin', '');
+        $frameNo     = $this->input->get('frameNo', '');
+        $oem         = $this->input->get('oem', false);
+        $operation   = $this->input->get('operation', '');
+        $catalogCode = $this->input->get('c');
+        $ssd         = $this->input->get('ssd', '');
         $request     = new \stdClass();
         $params      = [];
 
         $language = new Language();
 
-        $findType     = $this->input->getString('ft');
+        $findType     = $this->input->get('ft');
         $typeValue    = '';
         $notFoundData = [];
         $ident        = '';
@@ -96,7 +96,7 @@ class VehiclesHtml extends View
 
                 break;
             case 'FindVehicle':
-                $ident = $this->input->getString('identString', '');
+                $ident = $this->input->get('identString', '');
 
                 $requests['appendFindVehicle'] = [
                     'ident' => $ident,
@@ -112,7 +112,7 @@ class VehiclesHtml extends View
 
             case 'findByOEM':
                 if (!$catalogCode) {
-                    $brand = $this->input->getString('brand');
+                    $brand = $this->input->get('brand');
 
                     $referenceRequest['appendFindPartReferences'] = [
                         'oem' => $oem,
@@ -230,12 +230,12 @@ class VehiclesHtml extends View
             $this->groupedVehicles      = $vehicles ? $vehicles->groupedByName : false;
             $this->brandName            = $catalogInfo ? $catalogInfo->name : '';
             $this->searchBy             = $findType;
-            $this->rest                 = $this->input->getString('r', '');
+            $this->rest                 = $this->input->get('r', '');
             $this->vin                  = $vin;
             $this->frameNo              = $frameNo;
             $this->supportQuickGroups   = $catalogInfo && $catalogInfo->supportquickgroups ?: false;
             $this->columns              = Config::$VehiclesColumns;
-            $this->oem                  = $this->input->getString('oem');
+            $this->oem                  = $this->input->get('oem');
             $this->customOperationValue = $notFoundData;
             $this->ident                = $ident;
             $this->groupVehicles        = Config::$groupVehicles;
@@ -312,7 +312,7 @@ class VehiclesHtml extends View
     public function displayVehicleBrands($originals)
     {
         $this->originals = $originals;
-        $this->oem       = $this->input->getString('oem');
+        $this->oem       = $this->input->get('oem');
 
         parent::Display('vehicles', 'selectVehicleBrand');
         die();
@@ -374,7 +374,7 @@ class VehiclesHtml extends View
     public function displayDetailBrand($brands)
     {
         $this->brands = $brands;
-        $this->oem    = $this->input->getString('oem');
+        $this->oem    = $this->input->get('oem');
 
         parent::Display('vehicles', 'selectDetailBrand');
         die();

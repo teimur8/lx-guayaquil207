@@ -149,9 +149,9 @@ class Language
         $baseUrl = $_SERVER['HTTP_HOST'] . '/';
 
         if ($paths) {
-            $url = ('index.php?' . http_build_query($paths));
+            $url = ('/autozapchasti/model?' . http_build_query($paths));
             if (strpos($url, $baseUrl) === false) {
-                $url = 'index.php?' . http_build_query($paths);
+                $url = '/autozapchasti/model?' . http_build_query($paths);
             }
         } else {
             $url = $baseUrl;

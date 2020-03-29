@@ -28,12 +28,12 @@ class DetailfilterHtml extends View
 {
     public function Display($tpl = 'detailfilter', $view = 'view')
     {
-        $catalogCode = $this->input->getString('c');
-        $ssd         = $this->input->getString('ssd', '');
-        $f           = $this->input->getString('f');
-        $vid         = $this->input->getString('vid');
-        $uid         = $this->input->getString('uid');
-        $did         = $this->input->getString('did');
+        $catalogCode = $this->input->get('c');
+        $ssd         = $this->input->get('ssd', '');
+        $f           = $this->input->get('f');
+        $vid         = $this->input->get('vid');
+        $uid         = $this->input->get('uid');
+        $did         = $this->input->get('did');
         $params      = ['c' => $catalogCode, 'ssd' => $ssd, ''];
 
         $requests = [
@@ -51,8 +51,8 @@ class DetailfilterHtml extends View
         $data = $this->getData($requests, $params);
 
         if ($data) {
-            $fromTask        = $this->input->getString('fromTask');
-            $fromCatalogTask = $this->input->getString('fromCatalogTask');
+            $fromTask        = $this->input->get('fromTask');
+            $fromCatalogTask = $this->input->get('fromCatalogTask');
             $filters         = $data[0];
             $detail          = $data[1];
 
@@ -60,8 +60,8 @@ class DetailfilterHtml extends View
             $this->domain          = Config::$useEnvParams ? $this->getBackUrl() : 'javascript:void(0)';
             $this->detail          = $detail;
             $this->linkTarget      = $this->getLinkTarget();
-            $this->oem             = $this->input->getString('oem');
-            $this->brand           = $this->input->getString('brand');
+            $this->oem             = $this->input->get('oem');
+            $this->brand           = $this->input->get('brand');
             $this->from            = $this->input->getArray();
             $this->fromTask        = $fromTask;
             $this->fromCatalogTask = $fromCatalogTask;

@@ -20,7 +20,7 @@ class LoginHtml extends View
 
     public function Display($tpl = 'login', $view = 'view')
     {
-        $view = $this->input->getString('view');
+        $view = $this->input->get('view');
         switch ($view) {
             case 'login':
                 $this->login();

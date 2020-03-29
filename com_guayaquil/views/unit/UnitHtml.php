@@ -18,12 +18,12 @@ class UnitHtml extends View
 {
     public function Display($tpl = 'unit', $view = 'view')
     {
-        $catalogCode = $this->input->getString('c');
-        $ssd         = $this->input->getString('ssd', '');
-        $uid         = $this->input->getString('uid');
-        $vid         = $this->input->getString('vid');
+        $catalogCode = $this->input->get('c');
+        $ssd         = $this->input->get('ssd', '');
+        $uid         = $this->input->get('uid');
+        $vid         = $this->input->get('vid');
         $params      = ['c' => $catalogCode, 'ssd' => $ssd, ''];
-        $skipped     = $this->input->getString('skipped');
+        $skipped     = $this->input->get('skipped');
 
         $requests = [
             'appendGetUnitInfo'        => [
@@ -52,8 +52,8 @@ class UnitHtml extends View
             $language = new Language();
 
             $pathway         = new Pathway();
-            $fromTask        = $this->input->getString('fromTask');
-            $fromCatalogTask = $this->input->getString('fromTask');
+            $fromTask        = $this->input->get('fromTask');
+            $fromCatalogTask = $this->input->get('fromTask');
 
             $pathway->addItem($catalogInfo->name, $catalogInfo->link);
 
@@ -67,17 +67,17 @@ class UnitHtml extends View
             $this->unit              = $unit;
             $this->imagemap          = $imagemap;
             $this->details           = $details->toGroupsByCodeOnImage();
-            $this->catalog           = $this->input->getString('c');
-            $this->vid               = $this->input->getString('vid', '');
-            $this->gid               = $this->input->getString('gid', '');
-            $this->cid               = $this->input->getString('cid', '');
-            $this->selectedCoi       = $this->input->getString('coi', '');
+            $this->catalog           = $this->input->get('c');
+            $this->vid               = $this->input->get('vid', '');
+            $this->gid               = $this->input->get('gid', '');
+            $this->cid               = $this->input->get('cid', '');
+            $this->selectedCoi       = $this->input->get('coi', '');
             $this->domain            = $this->getBackUrl();
-            $this->cois              = $this->input->getString('coi') ? explode(', ',
-                $this->input->getString('coi')) : '';
+            $this->cois              = $this->input->get('coi') ? explode(', ',
+                $this->input->get('coi')) : '';
             $this->noimage           = Config::$imagePlaceholder;
             $this->fromCatalogTask   = $fromCatalogTask;
-            $this->corrected         = $this->input->getString('corrected');
+            $this->corrected         = $this->input->get('corrected');
             $this->useApplicability  = $catalogInfo->supportdetailapplicability;
             $this->showOems          = Config::$showOemsToGuest;
             $this->showApplicability = Config::$showApplicability;

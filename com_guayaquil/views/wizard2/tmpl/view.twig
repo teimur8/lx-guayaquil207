@@ -1,5 +1,5 @@
 {% block header %}
-    <h1>{{ 'search by wizard'|t }}</h1>
+    <h1 class="mb-6">{{ 'search by wizard'|t }}</h1>
 {% endblock %}
 {% block wizard2 %}
     {% set btn = 0 %}
@@ -18,7 +18,7 @@
                             <option value="">{{ field.value }}</option>
                         </select>
                         <a href="{{ createUrl('wizard2', '', '', {'c': c, 'ssd': field.ssd ? field.ssd : ''  }) }}">
-                            <img src="com_guayaquil/assets/images/remove.png" alt="">
+                            <img src="/lx/images/remove.png" alt="">
                         </a>
                     {% else %}
                     <select class="catalog_search_input select" name="select-{{ field.name }}"
@@ -33,9 +33,9 @@
             </tr>
         {% endfor %}
     </table>
-    <div class="control_button">
+    <div class="control_button mt-8">
         {% if btn  %}
-            <a class="gWizardVehicleLink" href="{{ createUrl('vehicles', '', '', {'ft': 'findByWizard2', 'c': cataloginfo.code, 'ssd': ssd }) }}">
+            <a class="gWizardVehicleLink btn-primary" href="{{ createUrl('vehicles', '', '', {'ft': 'findByWizard2', 'c': cataloginfo.code, 'ssd': ssd }) }}">
                 {{ 'list vehicles'|t }}
             </a>
         {% endif %}

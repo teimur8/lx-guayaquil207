@@ -19,9 +19,9 @@ class AftermarketHtml extends View
 {
     public function Display($tpl = 'aftermarket', $view = 'view')
     {
-        $view = $this->input->getString('view', 'view');
-        $this->input->getString('view');
-        $format = $this->input->getString('format');
+        $view = $this->input->get('view', 'view');
+        $this->input->get('view');
+        $format = $this->input->get('format');
         $language = new Language();
         if (Config::$useEnvParams) {
             $this->redirect($language->createUrl('catalogs'));
@@ -50,9 +50,9 @@ class AftermarketHtml extends View
 
     public function displayAftermarket()
     {
-        $oem = $this->input->getString('oem');
-        $brand = $this->input->getString('brand');
-        $detailId = $this->input->getString('detail_id');
+        $oem = $this->input->get('oem');
+        $brand = $this->input->get('brand');
+        $detailId = $this->input->get('detail_id');
         $input = $this->input->getArray();
         $options = isset($input['options']) ? $input['options'] : '';
         $replacementtypes = isset($input['replacementtypes']) ? $input['replacementtypes'] : [];
@@ -130,10 +130,10 @@ class AftermarketHtml extends View
 
     public function displayFindOem()
     {
-        $brand = $this->input->getString('brand', null);
-        $oem = $this->input->getString('oem', '');
-        $options = $this->input->getString('options', '');
-        $detailId = $this->input->getString('detail_id');
+        $brand = $this->input->get('brand', null);
+        $oem = $this->input->get('oem', '');
+        $options = $this->input->get('options', '');
+        $detailId = $this->input->get('detail_id');
         $replacementtypes = !empty($this->input->getArray()['replacementtypes']) ? $this->input->getArray()['replacementtypes'] : '';
 
         if ($replacementtypes) {

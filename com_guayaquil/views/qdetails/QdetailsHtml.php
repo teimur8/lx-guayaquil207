@@ -32,13 +32,13 @@ class QdetailsHtml extends View
 {
     public function Display($tpl = 'qdetails', $view = 'view')
     {
-        $catalogCode = $this->input->getString('c');
-        $ssd         = $this->input->getString('ssd', '');
-        $format      = $this->input->getString('format');
-        $vid         = $this->input->getString('vid');
-        $cid         = $this->input->getString('cid', -1);
-        $gid         = $this->input->getString('gid');
-        $oem         = $this->input->getString('oem');
+        $catalogCode = $this->input->get('c');
+        $ssd         = $this->input->get('ssd', '');
+        $format      = $this->input->get('format');
+        $vid         = $this->input->get('vid');
+        $cid         = $this->input->get('cid', -1);
+        $gid         = $this->input->get('gid');
+        $oem         = $this->input->get('oem');
         $params      = ['c' => $catalogCode, 'ssd' => $ssd, ''];
 
         $requests = [
@@ -48,11 +48,19 @@ class QdetailsHtml extends View
             ]
         ];
 
-        $requests['appendListQuickDetail'] = [
-            'vid' => $vid,
-            'gid' => $gid,
-            'all' => 1
-        ];
+        if (!$oem) {
+            $requests['appendListQuickDetail'] = [
+                'vid' => $vid,
+                'gid' => $gid,
+                'all' => 1
+            ];
+        } else {
+            $requests['appendGetOemPartApplicability'] = [
+                'oem' => $oem,
+            ];
+
+            $this->applicability = true;
+        }
 
         $data = $this->getData($requests, $params);
 
@@ -63,20 +71,20 @@ class QdetailsHtml extends View
             $details     = $data[2];
             $catalogInfo = $data[0];
 
-//            $pathway = new Pathway();
-//
-//            $pathway->addItem($catalogInfo->name, $catalogInfo->link);
-//
-//            $pathway->addItem($vehicle->name, $language->createUrl('qgroups', '', '', [
-//                'c'   => $catalogInfo->code,
-//                'vid' => $vehicle->vehicleid,
-//                'ssd' => $vehicle->ssd
-//            ]));
+            $pathway = new Pathway();
 
-//            $pathway->addItem($language->t('detailsInGroup'));
+            $pathway->addItem($catalogInfo->name, $catalogInfo->link);
 
-//            $this->pathway    = $pathway->getPathway();
-            $this->gid        = $this->input->getString('gid', '');
+            $pathway->addItem($vehicle->name, $language->createUrl('qgroups', '', '', [
+                'c'   => $catalogInfo->code,
+                'vid' => $vehicle->vehicleid,
+                'ssd' => $vehicle->ssd
+            ]));
+
+            $pathway->addItem($language->t('detailsInGroup'));
+
+            $this->pathway    = $pathway->getPathway();
+            $this->gid        = $this->input->get('gid', '');
 //            $this->categories = $categories;
             $this->details    = $details;
             $this->vehicle    = $vehicle;

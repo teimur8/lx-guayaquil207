@@ -11,6 +11,7 @@ namespace guayaquil;
 use guayaquil\guayaquillib\data\GuayaquilRequestOEM;
 use guayaquil\guayaquillib\data\Language;
 use guayaquil\modules\Input;
+use Illuminate\Http\Request;
 use Twig_Autoloader;
 use Twig_Environment;
 use Twig_Filter_Function;
@@ -49,9 +50,9 @@ class View
      */
     public $theme;
 
-    public function __construct()
+    public function __construct(Request $request)
     {
-        $this->input = new Input();
+        $this->input = $request;
         $this->data  = $this->getData();
         $this->theme = Config::$theme;
 
@@ -173,9 +174,9 @@ class View
 //        }
 
 
-//        if (!isset($this->pathway)) {
-//            $this->pathway = null;
-//        }
+        if (!isset($this->pathway)) {
+            $this->pathway = null;
+        }
 
         if (!isset($this->error)) {
             $this->error = null;
@@ -190,22 +191,28 @@ class View
             $this->loadTwig('error/tmpl', 'default.twig', ['message' => $this->message, 'more' => $this->errorTrace]);
         }
 
-//        if ($this->pathway) {
-//            $this->renderPathway($this->pathway);
-//        }
+        if ($this->pathway) {
+            $this->renderPathway($this->pathway);
+        }
 
-        $format = $this->input->getString('format');
+        $format = $this->input->get('format');
 
-//        dd($format, $this);
-
-//        if ($format !== 'raw') {
-//            $task          = $this->input->getString('task');
-//            $this->toolbar = in_array($task, Config::$toolbarPages);
-//            $this->showRequest();
-//        }
+        if ($format !== 'raw') {
+            $task          = $this->input->get('task');
+            $this->toolbar = in_array($task, Config::$toolbarPages);
+            $this->showRequest();
+        }
 
         $this->loadTwig($tpl . '/tmpl', $view . '.twig', (array)$this);
 //        $this->renderFooter();
+    }
+
+    public function DisplayHtml($tpl = 'catalogs/tmpl', $view = 'view.twig')
+    {
+        ob_clean();
+        ob_start();
+        $this->Display($tpl, $view);
+        return ob_get_clean();
     }
 
     public function renderHead($vars = [])

@@ -12,8 +12,8 @@ class Wizard2Html extends View
 
     public function Display($tpl = 'wizard2', $view = 'view')
     {
-        $c   = $this->input->getString('c', '');
-        $ssd = $this->input->getString('ssd', '');
+        $c   = $this->input->get('c', '');
+        $ssd = $this->input->get('ssd', '');
 
         $language = new Language();
 
