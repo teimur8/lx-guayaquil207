@@ -25,7 +25,9 @@
             </div>
         {% endblock %}
 
-        {{ block('units') }}
-        {{ block('categories') }}
+        <div class="tim-grid tim-grid-unitlist">
+            {{ block('units') }}
+            {{ block('categories') }}
+        </div>
     </div>
 {% endspaceless %}

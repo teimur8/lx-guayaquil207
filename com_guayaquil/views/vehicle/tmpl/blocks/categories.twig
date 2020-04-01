@@ -21,8 +21,8 @@
 
 {% block categories %}
     {% spaceless -%}
-        <div class="guayaquil_categoryfloatbox">
-            <div>
+        <div class="guayaquil_categoryfloatbox tim-category_sidebar">
+            {# <div> #}
                 <ul id="category-list">
                     <li class="category"><a class="category-heading">{{ 'categories'|t }}</a></li>
                     {% for category in categories %}
@@ -61,7 +61,7 @@
                         {% endblock %}
                     {% endfor %}
                 </ul>
-            </div>
+            {# </div> #}
         </div>
 
         <script type="text/javascript">

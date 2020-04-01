@@ -1,6 +1,6 @@
 {% use 'blocks/tooltips.twig' %}
 {% block units %}
-    <div class="float-unitlist">
+    <div class="float-unitlist tim-unitlist">
         {% for unit in units %}
             {% set linkToUnit = createUrl('unit','','', {
             'c': vehicle.catalog,

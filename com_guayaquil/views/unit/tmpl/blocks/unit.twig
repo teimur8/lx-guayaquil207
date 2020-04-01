@@ -9,9 +9,13 @@
         {{ block('unit_header') }}
         <div class="unit" id="g_container">
             {{ block('unit_remark') }}
-            {{ block('image') }}
-            {{ block('details') }}
-            {{ block('legend') }}
+            <div class="tim-grid tim-grid-50">
+                <div class="tim-grid_sticky">
+                    {{ block('image') }}
+                    {{ block('legend') }}
+                </div>
+                {{ block('details') }}
+            </div>
         </div>
     </div>
 {% endblock %}
