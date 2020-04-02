@@ -1,16 +1,13 @@
-<div class="breadcrump-wrapper">
-    <ul class="breadcrumb" itemprop="breadcrumb">
-        <li><a href="{{ createUrl('catalogs', '', '', []) }}">{{ 'catalogsList'|t }}</a></li>
-        {% for item in pathway %}
-            {% if item.name != '' %}
-            <li class="{{ current|replace({'/' : ''}) == item.link ? 'current': '' }}">
+<div class="breadcrumbs">
+    <a href="/">Главная</a> /
+    <a href="/autozapchasti">Запчасти</a> /
+    {% for item in pathway %}
+        {% if item.name != '' %}
                 {% if item.link != '' %}
-                    <a href="{{ item.link }}">{{ item.name }}</a>
+                    <a href="{{ item.link }}">{{ item.name }}</a> /
                 {% else %}
-                    <a class="not-active" href="javascript:void(0)">{{ item.name }}</a>
+                    <span>{{ item.name }}</span>
                 {% endif %}
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+        {% endif %}
+    {% endfor %}
 </div>
