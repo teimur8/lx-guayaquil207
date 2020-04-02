@@ -8,13 +8,17 @@
     <div class="unit_page">
         {{ block('unit_header') }}
         <div class="unit" id="g_container">
-            {{ block('unit_remark') }}
-            <div class="tim-grid tim-grid-50">
-                <div class="tim-grid_sticky">
+            <div class="row">
+                <div class="col-12">
+                    {{ block('unit_remark') }}
+                </div>
+                <div class="col-lg-6">
                     {{ block('image') }}
                     {{ block('legend') }}
                 </div>
-                {{ block('details') }}
+                <div class="col-lg-6">
+                    {{ block('details') }}
+                </div>
             </div>
         </div>
     </div>

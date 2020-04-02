@@ -1,5 +1,5 @@
 {% block details %}
-    <div class="column tim-detail_table tim-detail_table_unit w-auto">
+    <div class="column">
         {% if details %}
             <table class="table guayaquil_table collapse" id="viewtable">
                 <tbody>
@@ -31,13 +31,13 @@
                             </td>
                             <td name=c_oem class="{{ group.oem != '' ? 'g_ttd' : '' }}">
                                 {% if user or showOems %}
-                                {% if group.filter %}
-                                    <a href="javascript:void(0)" data-url="{{ filterUrl }}" id="filter">{{ detail.oem }} {{ 'needconfirm'|t }}</a>
-                                {% else %}
-                                    {% set marketUrl = domain|replace({'{article}': group.oem|url_encode, '{brand}': vehicle.brand|url_encode }) %}
+                                    {% if group.filter %}
+                                        <a href="javascript:void(0)" data-url="{{ filterUrl }}" id="filter">{{ detail.oem }} {{ 'needconfirm'|t }}</a>
+                                    {% else %}
+                                        {% set marketUrl = domain|replace({'{article}': group.oem|url_encode, '{brand}': vehicle.brand|url_encode }) %}
 
-                                    <a href="{{ marketUrl ? marketUrl : 'javascript:void(0)' }}" {% if linkTarget %}target="{{ linkTarget }}"{% endif %}>{{ group.oem }}</a>
-                                {% endif %}
+                                        <a href="{{ marketUrl ? marketUrl : 'javascript:void(0)' }}" {% if linkTarget %}target="{{ linkTarget }}"{% endif %}>{{ group.oem }}</a>
+                                    {% endif %}
                                 {% else %}
                                     <a href="javascript:void(0)" class="logging">*****</a>
                                 {% endif %}
@@ -67,18 +67,18 @@
                         {% set coi = 'i' ~ detail.codeonimage|t %}
 
                         {% set filterUrl = createUrl('detailfilter', '', '', {
-                        'c': catalog,
-                        'cid': cid,
-                        'vid': vid ?: 0,
-                        'uid': unit.unitid,
-                        'gid': gid,
-                        'oem': detail.oem,
-                        'brand':vehicle.brand|url_encode,
-                        'did': '',
-                        'f': detail.filter,
-                        'ssd': detail.ssd,
-                        'fromTask' : 'unit',
-                        'fromCatalogTask' : fromCatalogTask
+                            'c': catalog,
+                            'cid': cid,
+                            'vid': vid ?: 0,
+                            'uid': unit.unitid,
+                            'gid': gid,
+                            'oem': detail.oem,
+                            'brand':vehicle.brand|url_encode,
+                            'did': '',
+                            'f': detail.filter,
+                            'ssd': detail.ssd,
+                            'fromTask' : 'unit',
+                            'fromCatalogTask' : fromCatalogTask
                         }) %}
                         <tr id="d_{{ detail.codeonimage }}" name="{{ detail.codeonimage }}" class="g_highlight {% if detail.codeonimage in cois %} g_highlight_lock {% endif %} ">
                             <td name="c_pnc"

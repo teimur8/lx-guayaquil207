@@ -8,7 +8,7 @@
             </div>
         </div>
     {% endif %}
-    <div id="viewport" class="tim-viewport">
+    <div id="viewport">
         {% if imagemap %}
             {% for item in imagemap %}
                 {% set coi = item.code %}
@@ -24,19 +24,19 @@
                              margin-top: {{ otop }}px;
                              position: absolute;
                              overflow: hidden;"
-                     {% if item.link %}
-                        data-label="{{item.link.label }}"
-                     {% endif %}
+                        {% if item.link %}
+                            data-label="{{item.link.label }}"
+                        {% endif %}
                      owidth="{{ width }}px"
                      oheight="{{ height }}px"
                      oleft="{{ oleft }}px"
                      otop="{{ otop }}px">
                     {% if item.link %}
-                        <a href="{{ item.link.getLink() }}">
-                     {% endif %}
+                    <a href="{{ item.link.getLink() }}">
+                        {% endif %}
                         <img src="/lx/images/spacer.gif" width="{{ width }}" height="{{ height }}">
-                    {% if item.link %}
-                        </a>
+                        {% if item.link %}
+                    </a>
                     {% endif %}
                 </div>
             {% endfor %}
